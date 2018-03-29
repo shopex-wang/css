@@ -1,0 +1,8 @@
+近来，越来越多的网站将超链接写成<a href="//，将dns预解析写成<link rel="dns-prefetch" href="//。然后大家是不是百度都没有找到答案，其实大家
+应该去Google查询：href=“// instead of href=”http://
+
+这是因为这样写能自动识别当前协议，现在越来越多的网站同时使用https和http。
+
+写//，而不写http或https协议有个好处，这样能让用户使用https访问的时候，全部链接都指向https，访问http的时候，全部链接都指向http。
+
+http://www.3021.com.cn/href%E5%92%8Chrefhttp%E7%9A%84%E5%8C%BA%E5%88%AB/
