@@ -1,57 +1,78 @@
-1、unicode引用
-  unicode使用步骤如下：
+在线使用阿里巴巴图标库管理icon，首页需要新建一个项目，然后把svg图标添加到项目里
 
-  第一步：拷贝项目下面生成的font-face
+
+1、unicode引用
+
+  第一步：新建icon.sass文件
 
   @font-face {
-    font-family: 'iconfont';
-    src: url('iconfont.eot');
-    src: url('iconfont.eot?#iefix') format('embedded-opentype'),
-    url('iconfont.woff') format('woff'),
-    url('iconfont.ttf') format('truetype'),
-    url('iconfont.svg#iconfont') format('svg');
+    font-family: 'iconfont';  /* project id 608486 */
+    src: url('http://at.alicdn.com/t/font_608486_1ck83nv9977ujtt9.eot');
+    src: url('http://at.alicdn.com/t/font_608486_1ck83nv9977ujtt9.eot?#iefix') format('embedded-opentype'),
+    url('http://at.alicdn.com/t/font_608486_1ck83nv9977ujtt9.woff') format('woff'),
+    url('http://at.alicdn.com/t/font_608486_1ck83nv9977ujtt9.ttf') format('truetype'),
+    url('http://at.alicdn.com/t/font_608486_1ck83nv9977ujtt9.svg#iconfont') format('svg');
   }
-  第二步：定义使用iconfont的样式
 
-  .iconfont{
-    font-family:"iconfont" !important;
-    font-size:16px;font-style:normal;
+  .icon {
+    font-family: "iconfont" !important;
+    font-size: inherit;
+    color: inherit;
+    font-style: normal;
     -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale;
   }
-  第三步：挑选相应图标并获取字体编码，应用于页面
 
-  <i class="iconfont">&#x33;</i>
+  //实名
+  .icon-shiming:before {
+    content: "\e608";
+  }
+  
+  第二步：在页面引用css文件，并且调用
+    <i class="icon icon-attestation"></i>
+    或者<i class="iconfont">&#x33;</i>
+    
+**说明**
+  复制的代码@font-face默认是没有http:的，如果是本地访问页面，直接会走file://下的.woff,但是本地没有此文件，所以报错，但是，在线上的环境就可以直接
+  访问到（因为开启了服务），如果本地需要访问的话，需要开启服务，方式有3种：一、搭建apace或者nginx（PHP环境），二、直接用webstorm右上角浏览器icon，
+  就可以开启一个服务，三、加http:。
+  
   
 2、font-class引用
-  使用步骤如下：
 
   第一步：引入项目下面生成的fontclass代码：
-
-  <link rel="stylesheet" type="text/css" href="./iconfont.css">
+  <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_608876_i09gh4581bnpnwmi.css">
+  
   第二步：挑选相应图标并获取类名，应用于页面：
-
-  <i class="iconfont icon-xxx"></i>
+  <i class="iconfont icon-xiaochengxu"></i>
+  
+**说明**
+  类名iconfont也是默认的，若想修改，可在项目编辑中修改。
+  类名icon-xiaochengxu是在iconfont网站上自己生成的名称。
+  
   
 3、symbol引用
-  使用步骤如下：
 
-第一步：引入项目下面生成的symbol代码：
+  第一步：引入项目下面生成的symbol代码：
+  <script src="http://at.alicdn.com/t/font_608486_1ck83nv9977ujtt9.js"></script>
 
-<script src="./iconfont.js"></script>
-第二步：加入通用css代码（引入一次就行）：
+  第二步：加入通用css代码（引入一次就行）：
+  <style type="text/css">
+  .icon {
+     width: 1em; height: 1em;
+     vertical-align: -0.15em;
+     fill: currentColor;
+     overflow: hidden;
+  }
+  </style>
 
-<style type="text/css">
-.icon {
-   width: 1em; height: 1em;
-   vertical-align: -0.15em;
-   fill: currentColor;
-   overflow: hidden;
-}
-</style>
-第三步：挑选相应图标并获取类名，应用于页面：
+  第三步：挑选相应图标并获取类名，应用于页面：
 
-<svg class="icon" aria-hidden="true">
-  <use xlink:href="#icon-xxx"></use>
-</svg>
+  <svg class="icon" aria-hidden="true">
+    <use xlink:href="#icon-xxx"></use>
+  </svg>
+
+**说明**
+  必须用<svg>标签，否则无效。
+  
+  
